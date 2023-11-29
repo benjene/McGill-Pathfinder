@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="leaflet.ajax.min.js"></script>
+
+    <style>
+        html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+        }
+        h1 {
+          margin: 0;
+          padding: 20px;
+        }
+        #map {
+          flex: 1; /* Take up all available vertical space */
+        }
+        .leaflet-control-attribution, .leaflet-tooltip-pane, .leaflet-popup-pane {
+            display: none;
+        }
+        .leaflet-layer,
+        .leaflet-control-zoom-in,
+        .leaflet-control-zoom-out,
+        .leaflet-control-attribution {
+        filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+        }
+
+      </style>
+  </head>
+  <body>
+    <!-- <h1 style="text-align: center;">Map of McGill</h1> -->
+    <div id="map"></div>
+    <script>
+      // Initialize Leaflet
+      var map = L.map('map', {
+        maxBounds: [ // Define the bounds
+          [45.5048 - 0.015, -73.5772 - 0.015], // Southwestern corner
+          [45.5048 + 0.015, -73.5772 + 0.015]  // Northeastern corner
+        ]
+      });
+
+      // Set the view to Montreal and a zoom level of 10
+      map.setView([45.5048, -73.5772], 17);
+
+      var myStyle = { // Define your style object
+          "color": "#eda6a1"
+      };
+
+      // Add the OpenStreetMap tiles
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        minZoom: 16,
+        attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      }).addTo(map);
+      var geojsonLayer = new L.GeoJSON.AJAX("export.geojson", {style:myStyle});       
+        geojsonLayer.addTo(map);
+
+      // Show the scale bar on the lower left corner
+      L.control.scale({imperial: true, metric: true}).addTo(map);
+
+      // Show a marker on the map
+      // L.marker([45.5048, -73.5772]).bindPopup('Montreal, Canada').addTo(map);
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 500" width="300" height="500">
+<defs>
+	<g id="person" fill="#000">
+		<circle r="15" cx="30" cy="20"/>
+		<rect width="60" height="70" rx="15" y="40"/>
+		<rect width="18" height="90" rx="15" x="10" y="100"/>
+		<rect width="18" height="90" rx="15" x="32" y="100"/>
+	</g>
+</defs>
+<rect fill="#000" x="0" y="200" width="300" height="300" rx="50"/>
+<rect fill="#fff" x="40" y="240" width="220" height="220"/>
+
+<use xlink:href="#person" x="50" y="260"/>
+<use xlink:href="#person" x="120" y="260"/>
+<use xlink:href="#person" x="190" y="260"/>
+
+<polyline points="10,60 60,0 110,60 60,0 60,140" stroke="#000" stroke-width="35" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(30,30)"/>
+<polyline points="10,60 60,0 110,60 60,0 60,140" stroke="#000" stroke-width="35" stroke-linecap="round" stroke-linejoin="round" fill="none" transform="translate(280 170) rotate(180) "/>
+
+</svg>
