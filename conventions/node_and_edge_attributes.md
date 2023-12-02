@@ -24,6 +24,3 @@
   "name": "Main Library Entrance"
   "isRestricted": true, //For edges where hasRestrictedAccess=true, when traversing, check the value of isRestricted of the other node..
 }
-
-
-https://www.mcgill.ca/facilities/files/facilities/fall_winter_spring_hours_2023-2024_v12.pdf // opening hours
