@@ -29,8 +29,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.1955783"
-     inkscape:cx="368.02275"
-     inkscape:cy="536.97864"
+     inkscape:cx="368.85915"
+     inkscape:cy="536.97863"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
@@ -42,7 +42,7 @@
      id="defs2"><color-profile
        name="ASUSTek-COMPUTER-INC-24-"
        xlink:href="../../.local/share/icc/edid-dd6cde34aeda7524ba8f1b5f31e469b7.icc"
-       id="color-profile15622" /><pattern
+       id="color-profile1385" /><pattern
        inkscape:collect="always"
        xlink:href="#pattern5092"
        id="pattern5533"
@@ -4232,11 +4232,11 @@
              x="19.152147"
              y="135.73926"
              transform="translate(-2.3621265e-5,-1.7222465e-5)" /></g></g></g><polygon
-       points="36.298,55.184 36.298,36.519 54.694,36.519 54.694,18.23 72.924,18.23 72.924,0 100,0 100,9.279 81.984,9.279 81.984,27.567 63.755,27.567 63.755,46.068 45.524,46.068 45.524,64.46 27.184,64.46 27.184,83.077 0,83.077 0,73.687 18.232,73.687 18.232,55.184 "
+       points="54.694,36.519 54.694,18.23 72.924,18.23 72.924,0 100,0 100,9.279 81.984,9.279 81.984,27.567 63.755,27.567 63.755,46.068 45.524,46.068 45.524,64.46 27.184,64.46 27.184,83.077 0,83.077 0,73.687 18.232,73.687 18.232,55.184 36.298,55.184 36.298,36.519 "
        id="polygon2325"
        transform="matrix(0.05573944,0,0,0.05573944,126.99401,128.76482)"
        inkscape:label="staircase-left" /><polygon
-       points="81.984,9.279 81.984,27.567 63.755,27.567 63.755,46.068 45.524,46.068 45.524,64.46 27.184,64.46 27.184,83.077 0,83.077 0,73.687 18.232,73.687 18.232,55.184 36.298,55.184 36.298,36.519 54.694,36.519 54.694,18.23 72.924,18.23 72.924,0 100,0 100,9.279 "
+       points="63.755,27.567 63.755,46.068 45.524,46.068 45.524,64.46 27.184,64.46 27.184,83.077 0,83.077 0,73.687 18.232,73.687 18.232,55.184 36.298,55.184 36.298,36.519 54.694,36.519 54.694,18.23 72.924,18.23 72.924,0 100,0 100,9.279 81.984,9.279 81.984,27.567 "
        id="polygon2325-7"
        transform="matrix(0.05573944,0,0,0.05573944,65.06775,128.76511)"
        inkscape:label="staircase-right" /><g
@@ -4602,7 +4602,7 @@
      id="layer14-1-4"
      inkscape:label="dots(not in use)"
      transform="matrix(0.42165526,0,0,0.42165526,39.845273,26.171632)"
-     style="display:inline"><circle
+     style="display:none"><circle
        style="fill:#2ac200;fill-opacity:1;stroke:none;stroke-width:1.61684;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="path3515-9-7"
        cx="47.918816"
