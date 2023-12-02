@@ -1,4 +1,5 @@
 # EDGE
+```
 {
   "id": "02321", //random int starting with 0
   "name": "Burnside main hallway ?", //descriptive name
@@ -13,8 +14,9 @@
   "specialAccessHours": ["07452200", "07452000", "100018000", "100018000"], // for card holders.
   "specialAccessFaculty": ["Science"] // list of faculties with special access
 }
-
+```
 # NODE
+```
 {
   "id": "1591203", //random int starting with 1
   "name", //descriptive name
@@ -24,3 +26,4 @@
   "name": "Main Library Entrance"
   "isRestricted": true, //For edges where hasRestrictedAccess=true, when traversing, check the value of isRestricted of the other node..
 }
+```
