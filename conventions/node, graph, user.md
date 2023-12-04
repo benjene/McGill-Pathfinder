@@ -10,7 +10,6 @@
   "distanceX": 50,
   "distanceY": 10, // aka elevation gain
   "weight": 20,
-  "hasRestrictedAccess": true,
   "hours": { "general_public" = [{"open": "07:45", "close": "22:00"}, {"open": "07:45", "close": "18:00"}, {"open": "10:00", "close": "18:00"}, {"open": "10:00", "close": "18:00"}], science = [ ... ], arts = [ ... ]} // Can we use Factory Design Pattern? Store pointers to objects with this info?
 }
 ```
