@@ -1,3 +1,5 @@
+# Core idea: do we 
+
 # EDGE
 ```
 {
@@ -9,15 +11,15 @@
   "indoor": true,
   "distanceX": 50,
   "distanceY": 10, // aka elevation gain
-  "weight": 20,
-  "hasRestrictedAccess": true,
-  "hours": { "general_public" = [{"open": "07:45", "close": "22:00"}, {"open": "07:45", "close": "18:00"}, {"open": "10:00", "close": "18:00"}, {"open": "10:00", "close": "18:00"}], science = [ ... ], arts = [ ... ]} // Can we use Factory Design Pattern? Store pointers to objects with this info?
+  "weight": 20
 }
 ```
 
 ### Edge & Node ID
 - Maybe should be a random ID for easier lookups
 - 7 digits? Are 1 million unique nodes sufficient?
+- Note: bidirectional nodes are stored as two separate nodes.
+    - How to store edge in other direction? Store pointer? Store edge ID? Have a convention where a simple operation leads us to the next node? e.g. forward_node.id = 5821, backward_node.id = 15821
 ### Type
 - Stores info like if the path is an elevator, staircase, hallway path, cobblestone path, paved road, etc.
 ### Edge weights
@@ -43,7 +45,7 @@
 		- Music?
 		- Medicine/health sci?
 - Model for describing and storing access restrictions
-	- The access to buildings is modelled as layers of an onion. For example, the Engineering Complex closes after hours, except for a portion that gives access to the Schulich library. One can enter the Schulich library lobby but not the rest of the complex.
+	- The access to buildings is modelled as layers of increasing restriction. For example, the Engineering Complex closes after hours, except for a portion that gives access to the Schulich library. One can enter the Schulich library lobby but not the rest of the complex.
 		- Outdoor nodes have no restriction. Buildings have a higher level of restriction. Buildings may have sections with greater restrictions.
 		- Nodes have attribute restrictionLevel, integer values describing these access levels
 		- Nodes located outdoors have restrictionLevel=0. Indoors, nodes have restrictionLevel=1, or more if there is a special restricted section indoors.
@@ -73,13 +75,19 @@
   "longitude": -74.0060, // For indoor maps, Y refers to location on custom image map.
   "type": "buildingEntrance",  // or other types like 'classroom', 'staircase', etc.
   "name": "Main Library Entrance"
-  "restrictionLevel": 0, //For edges where hasRestrictedAccess=true, when traversing, check if the value of restrictionLevel is greater or lesser than the other node.
+  "restrictionLevel": 1, //For edges where hasRestrictedAccess=true, when traversing, check if the value of restrictionLevel is greater or lesser than the other node.
+  "hours": { "general_public" = [{"open": "07:45", "close": "22:00"}, {"open": "07:45", "close": "18:00"}, {"open": "10:00", "close": "18:00"}, {"open": "10:00", "close": "18:00"}], science = [ ... ], arts = [ ... ]} // Can we use Factory Design Pattern? Store pointers to objects with this info?,
+  "adjacency_list": {edge1, edge2, ...} // this will only store nodes where node.id == edge.start_node.id
   "tags": {"GIC", "Geography Information Center", "Geography Information Centre"} // extra info about a particular location. e.g. a point 
 }
 ```
 ### Latitude and Longitude
 - Outdoor nodes have their latitude and longitude stored here to display on the map
 - For indoor nodes, we are not able to get their GPS locations. We will give them X and Y values that show where they are on our not-to-scale floor plans.
+
+### Adjacency List
+- Nodes stored as list ordered 
+- As opposed to querying database for `SELECT EDGE where edge.start_node == ID`
 ### Tags
 - Extra info about the node not stored in the descriptive name field
 - Used for search functions? e.g. add "GIC" tag to node referring to entrance of GIC, so that if someone searches for GIC in search bar, the node with this tag is returned.
@@ -102,3 +110,28 @@
 	- **none**: x1
 	- **moderate**: x1.5
 	- **severe**: x2.
+- Store 3 versions of graphs? one for each node weight? is this more efficient than scaling the values?
+
+
+# Pseudocode for checking for access
+
+```
+//shortest path algo selects edge
+if edge.start_node.restrictionLevel < edge.end_node.restrictionLevel:
+	//case where you enter a higher security area
+	if (hasAccess(user.groups, end_node.hours) == true) {
+		// has access, continue algorithm
+	}
+	//does not have access
+else: //case where you enter a lower security area
+	//keep running shortest path algorithm
+
+func hasAccess(membership, access_hours) {
+	for (group in membership) {
+		if group[open] >= current time > group[close] {
+			return true;
+		}
+	}
+	return false;
+}
+```
